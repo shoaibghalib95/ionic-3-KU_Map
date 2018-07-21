@@ -6,7 +6,10 @@ import { LocationAccuracy } from '@ionic-native/location-accuracy';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
 
-import L from 'leaflet';
+import * as L from 'leaflet';
+import Routing from 'leaflet-routing-machine';
+
+
 
 @Component({
   selector: 'page-home',
@@ -23,6 +26,7 @@ export class HomePage {
   theMarker : any;
   // department = [ 'UBIT', 'Pharmacy' ,'KUBS', 'Commerce', 'Public Administration', 'Mathematics'];
   selectedDepart  = {};
+  
   department = [{
     name: "UBIT",
     lat: "24.9454",
@@ -56,12 +60,11 @@ export class HomePage {
     private androidPermissions: AndroidPermissions,
     private locationAccuracy: LocationAccuracy
   ) {
+  
 
   }
 
-  test(){
-    console.log(this.selectedDepart)
-  }
+ 
 
   ionViewDidEnter() {
     this.geolocation.getCurrentPosition().then((resp) => {
@@ -135,5 +138,21 @@ export class HomePage {
     this.theMarker = L.marker({lat: this.lat, lng: this.lng},{icon: myIcon}).addTo(this.map)
   }
 
+  getRoute(){
+  console.log(L);console.log(Routing);
+  // var map = L.map('map2');
+    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(this.map);
+
+L.Routing.control({
+  waypoints: [
+    L.latLng(this.lat, this.lng ),
+          L.latLng(this.selectedDepart['lat'],this.selectedDepart['lon'])
+  ],
+  routeWhileDragging: true
+}).addTo(this.map);
+    console.log(this.selectedDepart)
+  }
 
 }

@@ -6,15 +6,20 @@
   </ion-navbar>
   <ion-item>
     <ion-label>Select Your Department</ion-label>
-    <ion-select [(ngModel)]="selectedDepart">
+    <ion-select [(ngModel)]="selectedDepart" >
       <ion-option *ngFor="let depart of department" [value]="depart">{{depart.name}}</ion-option>
     </ion-select>
   </ion-item>
+  <br>
+  <div text-center>
+  <button ion-button round (click)="getRoute()" style="width: 50%; font-size: 16px; text-transform: uppercase;">Get Route</button>
+</div>
 </ion-header>
 
 <ion-content padding>
   <div class="map-container">
-    <div id="map1" style="height: 750px;">
+    <div id="map1" style="height: 550px;">
     </div>
+    <!-- <div *ngIf="selectedDepart" id="map" class="map" style="height: 550px;"></div> -->
   </div>
 </ion-content>
