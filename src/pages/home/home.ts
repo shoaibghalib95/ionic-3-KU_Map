@@ -21,7 +21,33 @@ export class HomePage {
   public lat: number = 0;
   public lng: number = 0;
   theMarker : any;
-
+  // department = [ 'UBIT', 'Pharmacy' ,'KUBS', 'Commerce', 'Public Administration', 'Mathematics'];
+  selectedDepart  = {};
+  department = [{
+    name: "UBIT",
+    lat: "24.9454",
+    lon: "67.1150"
+}, {
+  name: "Pharmacy",
+  lat: "24.9445",
+  lon: "67.1160"
+}, {
+  name: "KUBS",
+  lat: "24.9382",
+  lon: "67.1112"
+}, {
+  name: "Commerce",
+  lat: "24.9395",
+  lon: "67.1138"
+}, {
+  name: "Public Administration",
+  lat: "24.9390",
+  lon: "67.1123"
+}, {
+  name: "Mathematics",
+  lat: "24.9403",
+  lon: "67.1216"
+}];
 
 
 
@@ -31,6 +57,10 @@ export class HomePage {
     private locationAccuracy: LocationAccuracy
   ) {
 
+  }
+
+  test(){
+    console.log(this.selectedDepart)
   }
 
   ionViewDidEnter() {

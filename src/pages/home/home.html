@@ -6,17 +6,8 @@
   </ion-navbar>
   <ion-item>
     <ion-label>Select Your Department</ion-label>
-    <ion-select [(ngModel)]="department">
-      <ion-option value="ubit">UBIT</ion-option>
-      <ion-option value="pharm">Pharmacy</ion-option>
-      <ion-option value="kubs">KUBS</ion-option>
-      <ion-option value="dpa">Public Administration</ion-option>
-      <ion-option value="math">Mathematics</ion-option>
-      <ion-option value="math">Mathematics</ion-option>
-      <ion-option value="math">Mathematics</ion-option>
-      <ion-option value="math">Mathematics</ion-option>
-      <ion-option value="math">Mathematics</ion-option>
-
+    <ion-select [(ngModel)]="selectedDepart">
+      <ion-option *ngFor="let depart of department" [value]="depart">{{depart.name}}</ion-option>
     </ion-select>
   </ion-item>
 </ion-header>
